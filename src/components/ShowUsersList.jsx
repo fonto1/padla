@@ -6,7 +6,7 @@ export default function ShowUsersList({ users }) {
       {users.map((usr, index) => (
         <div
           key={index}
-          style={{ textDecoration: usr.select ? "line-through" : "inital" }}
+          style={{ textDecoration: usr.select ? "line-through" : "none" }}
         >
           {usr.name}
         </div>

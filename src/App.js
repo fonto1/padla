@@ -7,14 +7,18 @@ import "./App.css";
 import ShowUsersList from "./components/ShowUsersList";
 
 function App() {
+  const [disableAddPlayerButton, setDisabledAddPlayerButton] = useState(false);
   const [players, updatePlayers] = useState([]);
   const [leader, updateLeader] = useState([]);
   const [member, updateMember] = useState([]);
   const [teams, updateTeams] = useState([]);
 
   const addTeam = (selectLeader, selectMember) => {
-    updateTeams((prev) => [...prev, `${selectLeader}/${selectMember}`]);
+    if (!disableAddPlayerButton) {
+      setDisabledAddPlayerButton(!disableAddPlayerButton);
+    }
 
+    updateTeams((prev) => [...prev, `${selectLeader}/${selectMember}`]);
     updatePlayers((prev) => [
       ...prev.map((usr) =>
         usr.name === selectMember || usr.name === selectLeader
@@ -32,18 +36,15 @@ function App() {
     const use = [...players];
     const half = Math.ceil(use.length / 2);
 
-    const firstHalf = use.splice(0, half);
-    const secondHalf = use.splice(-half);
-
-    updateLeader(() => firstHalf);
-    updateMember(() => secondHalf);
+    updateLeader(use.splice(0, half));
+    updateMember(use.splice(-half));
   }, [players]);
 
   return (
     <div className="container">
       <div className="main">
         <div className="leftCenterTop">
-          <AddPlayers addPlayer={addPlayer} />
+          <AddPlayers addPlayer={addPlayer} status={disableAddPlayerButton} />
         </div>
         <div className="rightTop">
           <Form leader={leader} addTeam={addTeam} member={member} />

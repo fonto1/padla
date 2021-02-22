@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-export default function AddPlayers({ addPlayer }) {
+export default function AddPlayers({ addPlayer, status }) {
   let currentPlayer = "";
 
   const value = useRef();
@@ -9,13 +9,15 @@ export default function AddPlayers({ addPlayer }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        addPlayer(currentPlayer);
-        currentPlayer = "";
-        value.current.value = "";
+        if (currentPlayer && value.current.value) {
+          addPlayer(currentPlayer);
+          currentPlayer = "";
+          value.current.value = "";
+        }
       }}
     >
       <input ref={value} onChange={(e) => (currentPlayer = e.target.value)} />
-      <input type="submit" value="Add Player" />
+      <input type="submit" value="Add Player" disabled={status} />
     </form>
   );
 }
