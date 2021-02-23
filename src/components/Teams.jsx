@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Teams({ teams }) {
   return (
-    <div>
-      <h2>Teams</h2>
+    <div style={{ margin: "20px" }}>
+      <h5>Teams</h5>
       {teams.map((team, index) => (
         <div key={index}>{team}</div>
       ))}

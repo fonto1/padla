@@ -7,8 +7,8 @@ export default function Form({ leader, member, addTeam }) {
   let currentSelectedMember = "";
 
   return (
-    <div>
-      <select>
+    <div className="input-group mb-3 margin-md" style={{ margin: "20px" }}>
+      <select className="custom-select col-3">
         {currentLeader ? (
           <option value={currentLeader.name}>{currentLeader.name}</option>
         ) : (
@@ -16,10 +16,18 @@ export default function Form({ leader, member, addTeam }) {
         )}
       </select>
 
-      <select onChange={(e) => (currentSelectedMember = e.target.value)}>
+      <select
+        className="custom-select col-3"
+        onChange={(e) => (currentSelectedMember = e.target.value)}
+      >
         {member.some((usr) => usr.select === false) ? (
           member.map((usr, index) => (
-            <option key={index} value={usr.name} disabled={usr.select}>
+            <option
+              key={index}
+              value={usr.name}
+              disabled={usr.select}
+              style={{ color: usr.select ? "red" : "black" }}
+            >
               {usr.name}
             </option>
           ))
@@ -27,17 +35,19 @@ export default function Form({ leader, member, addTeam }) {
           <option>N/A</option>
         )}
       </select>
-
-      <button
-        onClick={() => {
-          if (currentLeader && currentSelectedMember) {
-            addTeam(currentLeader.name, currentSelectedMember);
-            currentSelectedMember = "";
-          }
-        }}
-      >
-        Add Team
-      </button>
+      <div className="input-group-append">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            if (currentLeader && currentSelectedMember) {
+              addTeam(currentLeader.name, currentSelectedMember);
+              currentSelectedMember = "";
+            }
+          }}
+        >
+          Add Team
+        </button>
+      </div>
     </div>
   );
 }

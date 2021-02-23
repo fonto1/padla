@@ -2,14 +2,18 @@ import React from "react";
 
 export default function ShowUsersList({ users, titel }) {
   return (
-    <div>
-      <h2>{titel}</h2>
+    <div style={{ margin: "20px" }}>
+      <h5>{titel}</h5>
       {users.map((usr, index) => (
         <div
           key={index}
           style={
             usr.select
-              ? { textDecoration: "line-through", textDecorationColor: "red" }
+              ? {
+                  textDecoration: "line-through",
+                  textDecorationColor: "red",
+                  fontWeight: "bolder",
+                }
               : {}
           }
         >

@@ -6,7 +6,7 @@ export default function AddPlayers({ addPlayer, status, players }) {
 
   return (
     <form
-      style={{ display: "flex" }}
+      style={{ display: "flex", margin: "20px" }}
       onSubmit={(e) => {
         e.preventDefault();
         if (
@@ -20,8 +20,21 @@ export default function AddPlayers({ addPlayer, status, players }) {
         }
       }}
     >
-      <input ref={value} onChange={(e) => (currentPlayer = e.target.value)} />
-      <input type="submit" value="Add Player" disabled={status} />
+      <div className="form-group row">
+        <input
+          className="form-control col-6"
+          ref={value}
+          onChange={(e) => (currentPlayer = e.target.value)}
+        />
+        <button
+          type="submit"
+          className="btn btn-primary col-6"
+          value="Add Player"
+          disabled={status}
+        >
+          Add Player
+        </button>
+      </div>
     </form>
   );
 }
