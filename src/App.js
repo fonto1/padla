@@ -44,16 +44,20 @@ function App() {
     <div className="container">
       <div className="main">
         <div className="leftCenterTop">
-          <AddPlayers addPlayer={addPlayer} status={disableAddPlayerButton} />
+          <AddPlayers
+            addPlayer={addPlayer}
+            status={disableAddPlayerButton}
+            players={players}
+          />
         </div>
         <div className="rightTop">
           <Form leader={leader} addTeam={addTeam} member={member} />
         </div>
         <div className="leftBottem">
-          <ShowUsersList users={leader} />
+          <ShowUsersList users={leader} titel="Team-Leader" />
         </div>
         <div className="centerBottem">
-          <ShowUsersList users={member} />
+          <ShowUsersList users={member} titel="Team-Member" />
         </div>
         <div className="rightBottem">
           <Teams teams={teams} />

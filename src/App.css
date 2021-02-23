@@ -12,28 +12,26 @@
 
 .leftCenterTop {
   text-align: center;
-  background-color: blueviolet;
+
   grid-area: addP;
 }
 
 .rightTop {
   grid-area: sel;
-  text-align: right;
-  background-color: chocolate;
+  text-align: center;
 }
 
 .leftBottem {
   grid-area: listA;
-  background-color: cornflowerblue;
+
   text-align: center;
 }
 .centerBottem {
   grid-area: listB;
   text-align: center;
-  background-color: crimson;
 }
 .rightBottem {
   grid-area: listT;
-  background-color: darksalmon;
+
   text-align: center;
 }
